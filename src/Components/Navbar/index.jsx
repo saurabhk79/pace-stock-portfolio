@@ -1,7 +1,26 @@
+import { useEffect, useState } from "react";
+
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      // Update the state based on the scroll position
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className={`navbar navbar-expand-lg bg-body-tertiary custom-nav ${scrolled ? 'navbar-scrolled' : ''}`}>
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             {"<Mohd />"}

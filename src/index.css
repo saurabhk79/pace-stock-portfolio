@@ -1,0 +1,62 @@
+* {
+  box-sizing: border-box;
+}
+
+section {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar Styles */
+.custom-nav {
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  position: fixed;
+  z-index: 100;
+  width: 100vw;
+}
+
+/* Scroll Down Styles */
+.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 6px -6px black;
+}
+
+#background {
+  background: linear-gradient(
+      136deg,
+      rgb(68, 132, 206),
+      rgb(26, 215, 192),
+      rgb(255, 155, 17),
+      rgb(155, 89, 182),
+      rgb(255, 127, 127),
+      rgb(236, 240, 241)
+    )
+    0% 0% / 1200% 1200%;
+  animation: gradientAnimation 70s infinite;
+  height: 100vh; /* Adjust the height based on your design */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes gradientAnimation {
+  0%,
+  100% {
+    background-position: 0% 0%;
+  }
+  20%,
+  80% {
+    background-position: 100% 0%;
+  }
+  40% {
+    background-position: 200% 0%;
+  }
+  60% {
+    background-position: 300% 0%;
+  }
+}

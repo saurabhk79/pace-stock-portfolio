@@ -1,46 +1,84 @@
+import { FaGithub } from "react-icons/fa6";
+
+import { useEffect } from "react";
+import { useState } from "react";
+
 const Projects = () => {
-  const projectsObj = [
-    {
-      title: "create-react-app-lambda",
-      about: "",
-      cloneurl: "https://github.com/Mohd-shahid-iqbal/create-react-app-lambda/archive/master.zip",
-      repourl: "https://github.com/Mohd-shahid-iqbal/create-react-app-lambda",
-      languages: [],
-      starslink:
-        "https://github.com/Mohd-shahid-iqbal/create-react-app-lambda/stargazers",
-      lastUpdated: "December 7, 2023",
-    },
-  ];
+  // https://api.github.com/users/Mohd-shahid-iqbal/repos?sort=updated&direction=desc
+  const [projectsObj, setProjectsObj] = useState([]);
+
+  const fetchProjects = async () => {
+    const res = await fetch(
+      "https://api.github.com/users/Mohd-shahid-iqbal/repos?sort=updated&direction=desc"
+    );
+    const data = await res.json();
+
+    console.log(data);
+
+    setProjectsObj(data);
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
 
   return (
     <>
-      <section>
-        <h1>Recent Projects</h1>
-        <div className="card" style="width: 18rem;">
-          {projectsObj.map((ele) => {
-            return (
-              <>
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <h6 className="card-subtitle mb-2 text-body-secondary">
-                    {ele.title}
-                  </h6>
-                  <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card&apos;s content.
-                  </p>
-                  <a href="#" className="card-link">
-                    Card link
-                  </a>
-                  <a href="#" className="card-link">
-                    Another link
-                  </a>
+      <div style={{ backgroundColor: "rgb(233,236,239)" }}>
+        <div className="container py-5">
+          <h1 className="display-4 text-center mb-5">Recent Projects</h1>
+
+          <div className="grid">
+            {projectsObj.map((ele, idx) => {
+              const {
+                clone_url,
+                url,
+                name,
+                language,
+                stargazers_url,
+                updated_at,
+              } = ele;
+
+              const inputDate = new Date(updated_at);
+
+              const options = {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              };
+              const formattedDate = inputDate.toLocaleDateString(
+                "en-US",
+                options
+              );
+              return (
+                <div className="card col-12 col-lg-4 mb-3" key={idx}>
+                  <div className="card-body">
+                    <h5 className="card-title">{name}</h5>
+                    <a
+                      href={clone_url}
+                      className="btn btn-outline-secondary me-3"
+                    >
+                      <FaGithub />
+                      Clone Project
+                    </a>
+                    <a href={url} className="btn btn-outline-secondary">
+                      <FaGithub /> Repo
+                    </a>
+                    <hr />
+                    <p>Languages : {language || "code yet to be deployed."}</p>
+                    <a href={stargazers_url}>
+                      <FaGithub /> Stars
+                    </a>
+                    <span className="text-secondary">
+                      Updated on {formattedDate}
+                    </span>
+                  </div>
                 </div>
-              </>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
