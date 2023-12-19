@@ -62,7 +62,7 @@ const Skills = () => {
   ];
   return (
     <>
-      <div className="container">
+      <div className="container py-5">
         <h1 className="display-4 text-center">Skills</h1>
 
         <ul className="nav nav-tabs nav-fill">
@@ -88,53 +88,57 @@ const Skills = () => {
         </ul>
 
         <div className="tab-content py-4">
-          <div id="content1" className="tab-pane fade show active grid">
-            {technicalContentData.map((ele, idx) => {
-              return (
-                <div key={idx} className="col-12 col-md-6">
-                  <p className="lead">{ele.title}</p>
-                  <div
-                    className="progress"
-                    role="progressbar"
-                    aria-label="Basic example"
-                    aria-valuenow={ele.percentage}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
+          <div id="content1" className="tab-pane fade show active ">
+            <div className="row">
+              {technicalContentData.map((ele, idx) => {
+                return (
+                  <div key={idx} className="col-12 col-md-6">
+                    <p className="lead">{ele.title}</p>
                     <div
-                      className="progress-bar"
-                      style={{
-                        width: `${ele.percentage}%`,
-                      }}
-                    ></div>
+                      className="progress"
+                      role="progressbar"
+                      aria-label="Basic example"
+                      aria-valuenow={ele.percentage}
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <div
+                        className="progress-bar"
+                        style={{
+                          width: `${ele.percentage}%`,
+                        }}
+                      ></div>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-          <div id="content2" className="tab-pane fade grid">
-            {softContentData.map((ele, idx) => {
-              return (
-                <div key={idx} className="col-12 col-md-6">
-                  <p className="lead">{ele.title}</p>
-                  <div
-                    className="progress"
-                    role="progressbar"
-                    aria-label="Basic example"
-                    aria-valuenow={ele.percentage}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
+          <div id="content2" className="tab-pane fade ">
+            <div className="row">
+              {softContentData.map((ele, idx) => {
+                return (
+                  <div key={idx} className="col-12 col-md-6">
+                    <p className="lead">{ele.title}</p>
                     <div
-                      className="progress-bar"
-                      style={{
-                        width: `${ele.percentage}%`,
-                      }}
-                    ></div>
+                      className="progress"
+                      role="progressbar"
+                      aria-label="Basic example"
+                      aria-valuenow={ele.percentage}
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      <div
+                        className="progress-bar"
+                        style={{
+                          width: `${ele.percentage}%`,
+                        }}
+                      ></div>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ const Hero = () => {
         <p className="lead">
           Passionate about changing the world with technology.
         </p>
-        <div className="d-flex gap-2 my-5">
+        <div className="d-flex gap-2 my-5 icons-list">
           <a href="">
             <FaGithub size={40} />
           </a>

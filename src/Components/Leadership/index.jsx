@@ -1,7 +1,7 @@
 const Leadership = () => {
   return (
     <>
-      <div className="container">
+      <div className="container py-5">
         <h1 className="display-4 mb-5 text-center"> Leadership</h1>
         <div className="d-flex justify-content-between">
           <p className="lead w-50">
@@ -75,7 +75,7 @@ const Carousel = () => {
     },
   ];
   return (
-    <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" className="carousel slide w-50" data-bs-ride="carousel" >
       <div className="carousel-indicators">
         {carouselData.map((ele, idx) => {
           return (

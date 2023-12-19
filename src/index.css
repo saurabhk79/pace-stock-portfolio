@@ -26,6 +26,10 @@ a {
   box-shadow: 0 4px 6px -6px black;
 }
 
+.icons-list > a:hover {
+  color: black;
+}
+
 #background {
   background: linear-gradient(
       136deg,
